@@ -22,7 +22,7 @@
 #define EXIT_ON_ERROR 1
 
 // set by `--verbose` option
-static int verbose_flag
+static int verbose_flag;
 
 // we send exactly this HTTP request header 
 const char *request_header = "GET / HTTP/1.1\r\n"
@@ -207,9 +207,9 @@ int main(int argc, char* argv[]) {
                     // In a rough manner
                     if (!verbose_flag) {
                         char *token;
-                        token = strtok_r(buffer, " ");
+                        token = strtok(buffer, " ");
                         if (token) {
-                            token = strtok_r(NULL, " ");                           
+                            token = strtok(NULL, " ");                           
                         }
                         if (!token)
                             token = "?";
