@@ -151,7 +151,7 @@ int main(int argc, char* argv[]) {
         if (sockfd == -1) {
             error("Failed to create socket!", 0);
         }
-        // fill host info
+        // Fill host info
         struct sockaddr_in server_addr;
         memset(&server_addr, 0, sizeof(server_addr));
         server_addr.sin_family = AF_INET;
@@ -181,9 +181,9 @@ int main(int argc, char* argv[]) {
         while (valid && (r = read(sockfd, buffer, BUFFER_SIZE)) > 0){
             if (new) {
                 new = 0;
-                if (!strncmp(buffer,"HTTP/1.1 200 OK", strlen(buffer))
-                    && !strncmp(buffer,"HTTP/2 200", strlen(buffer))
-                    && !strncmp(buffer,"HTTP/1 200 OK", strlen(buffer))) {
+                if (!strncmp(buffer,"HTTP/1.1 200 OK", BUFFER_SIZE)
+                    && !strncmp(buffer,"HTTP/2 200", BUFFER_SIZE)
+                    && !strncmp(buffer,"HTTP/1 200 OK", BUFFER_SIZE) {
                     valid = 0;
                 }
             }
@@ -235,8 +235,8 @@ int main(int argc, char* argv[]) {
            
     printf("------------------------ Content Size (KB) ----------------------\n");
     printf(" Largest | Smallest | Success Rate\n");
-    printf(" %7.3f | %7.3f | %6.2f%%\n",
-           largest / 1024, smallest / 1024, (double)success / repeat);
+    printf(" %7.3f | %8.3f | %6.2f%%\n",
+           largest / 1024, smallest / 1024, (double)success*100 / repeat);
 
     // Finishing up
     free(buffer);
