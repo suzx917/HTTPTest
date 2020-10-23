@@ -43,7 +43,7 @@ void help(void) {
 }
 
 // Print debug message
-void error(char* msg, int quit) {
+void error(const char* msg, int quit) {
     perror(msg);
     if (quit)
         exit(EXIT_FAILURE);
