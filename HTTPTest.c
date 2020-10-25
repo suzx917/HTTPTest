@@ -299,7 +299,7 @@ int main(int argc, char* argv[]) {
         }
         
 	/*** Stop timer ***/
-        gettimeofday(&stop, NULL)
+        gettimeofday(&stop, NULL);
 
         // Statistics
         if (valid) {
