@@ -46,9 +46,9 @@ The results (rounded to nearest integer) are following (also see `screenshots` f
 | 2    | 82          | 536         | 121      | 99         | 1       | 1            | 100        |
 | 3    | 87          | 22204       | 131      | 102        | 10      | 19           | 100        |
 
-Simply comparing, Cloudflare worker wins over Google even consider the discrepency between packet sizes. 50 KB packet on a 100 Mb bandwidth roughly needs 4 ms transmission delay. But also our experiment is very limted, it only has a single host and is in a small time window.
+The packets from my-worker are very small because they are refresh instructions (http-equiv="refresh"). Presumably some caching technology comes into play.
 
-Some other observation:
+Most popular websites (such as YouTube, Twitter, GitHub) only support an HTTPS visit and our program gets a 301 or 302 to a https link.
+Due to limited schedule, SSL connection is not implemented for this project.
 
-+ Most popular websites (such as YouTube, Twitter, GitHub) only support an HTTPS visit and our program gets a 301 or 302 to a https link.
-+ Trying to find websites still supporting HTTP, we found some shame lists, like: whynohttps.com
+Any feedback is appreciated. szx917@gmail.com
