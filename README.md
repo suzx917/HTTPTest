@@ -48,7 +48,7 @@ The results (rounded to nearest integer) are following (also see `screenshots` f
 
 The packets from my-worker are very small because they are refresh instructions (http-equiv="refresh"). Presumably some caching technology comes into play.
 
-Most popular websites (such as YouTube, Twitter, GitHub) only support an HTTPS visit and our program gets a 301 or 302 to a https link.
+Most popular websites (such as YouTube, Twitter, GitHub) only support an HTTPS visit and our program gets a 301 or 302 which redirects to thier https link.
 Due to limited schedule, SSL connection is not implemented for this project.
 
 Any feedback is appreciated. szx917@gmail.com
