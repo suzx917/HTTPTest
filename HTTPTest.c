@@ -299,7 +299,7 @@ int main(int argc, char* argv[]) {
         }
         
 	/*** Stop timer ***/
-        gettimeofday(&stop, NULL);
+        gettimeofday(&stop, NULL)
 
         // Statistics
         if (valid) {
@@ -341,9 +341,9 @@ int main(int argc, char* argv[]) {
     printf(" %7.3f | %7.3f | %7.3f | %7.3f\n", fastest, slowest, mean, median);
             
     printf("----------------- Content Size (KB) -------------------\n");
-    printf(" Largest | Smallest | Success Rate\n");
-    printf(" %7.3f | %8.3f | %6.2f%%\n",
-           largest / 1024.0, smallest / 1024.0, (double)success*100 / repeat);
+    printf(" Largest | Smallest | Repeat | Success Rate\n");
+    printf(" %7.3f | %8.3f | %6d | %8.2f%%\n",
+           largest / 1024.0, smallest / 1024.0, repeat,(double)success*100 / repeat);
    
     // Step 6: Finishing up
     freeaddrinfo(result);
