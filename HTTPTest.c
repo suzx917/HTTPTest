@@ -28,7 +28,7 @@ static int verbose_flag;
 char servport[8] = "80";
 
 // we send exactly this HTTP request header 
-const char *request_header_template = "GET / HTTP/1.1\r\n"
+const char *request_header_template = "GET %s HTTP/1.1\r\n"
                                       "Host: %s\n"
 				      "Connection: close\r\n\r\n'";
 
@@ -185,7 +185,7 @@ int main(int argc, char* argv[]) {
         error("Failed to allocate memory!", EXIT_ON_ERROR);
     }
     // Build request header for sendeng later
-    sprintf(request_header, request_header_template, url.hostname);
+    sprintf(request_header, request_header_template, url.pathname, url.hostname);
     // Test timer
     struct timeval start, stop;
     if (gettimeofday(&start, NULL) == -1) {
