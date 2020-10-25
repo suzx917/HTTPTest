@@ -140,6 +140,7 @@ int main(int argc, char* argv[]) {
     // Parse URL in a simple way
     // trim scheme (http or https)
     struct URL url;
+    memset(&url, 0, sizeof(url));
     if (strstr(urlarg, "http://") == urlarg)
         urlarg += 7;
     else if (strstr(urlarg, "https://") == urlarg)
@@ -156,6 +157,20 @@ int main(int argc, char* argv[]) {
     }
     if (verbose_flag)
 	printf("hostname = %s, pathname = %s\n", url.hostname, url.pathname);
+    
+    // Lookup and resolve url
+    struct addrinfo hints;
+    struct addrinfo *result, *rp;
+    memset(&hints, 0, sizeof(struct addrinfo));
+    hints.ai_family = AF_UNSPEC;
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_flags = AI_NUMERICSERV;
+    hints.ai_protocol = 0;
+    rc = getaddrinfo(url.hostname, servport, &hints, &result);
+    if (rc != 0) {
+        fprintf(stderr, "Cannot get address info for %s\n", url.hostname);
+        error(gai_strerror(rc), EXIT_ON_ERROR);
+    }
     
     //
     // Step 2: Initialize Test
@@ -186,19 +201,6 @@ int main(int argc, char* argv[]) {
     smallest = INT_MAX;
     double t_total = 0;
 
-    // Lookup and resolve url
-    struct addrinfo hints;
-    struct addrinfo *result, *rp;
-    memset(&hints, 0, sizeof(struct addrinfo));
-    hints.ai_family = AF_UNSPEC;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_flags = AI_NUMERICSERV;
-    hints.ai_protocol = 0;
-    rc = getaddrinfo(url.hostname, servport, &hints, &result);
-    if (rc != 0) {
-        fprintf(stderr, "Cannot get address info for %s\n", url.hostname);
-        error(gai_strerror(rc), EXIT_ON_ERROR);
-    }
     //
     // Step 3: Start testing loop
     //
