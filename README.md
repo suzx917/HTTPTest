@@ -4,7 +4,7 @@ A simple C client program testing HTTP connection.
 
 ### 1. Compile
 
-Linux + make + gcc
+Linux GCC:
 
 `$ make`
 
