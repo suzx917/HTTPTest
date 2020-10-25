@@ -46,7 +46,7 @@ The results (rounded to nearest integer) are following (also see `screenshots` f
 | 2    | 82          | 536         | 121      | 99         | 1       | 1            | 100        |
 | 3    | 87          | 22204       | 131      | 102        | 10      | 19           | 100        |
 
-Statistically, Cloudflare worker wins over the other two even consider the discrepency between packet size. 50 KB on a 100 MB bandwidth roughly brings 0.5 ms delay. But also our experiment is very limted, it only has a single host and is in a small time window.
+Simply comparing, Cloudflare worker wins over Google even consider the discrepency between packet sizes. 50 KB packet on a 100 Mb bandwidth roughly needs 4 ms transmission delay. But also our experiment is very limted, it only has a single host and is in a small time window.
 
 Some other observation:
 
